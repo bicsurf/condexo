@@ -3,9 +3,10 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -18,6 +19,7 @@ class CreateNewUser implements CreatesNewUsers
      * @param  array  $input
      * @return \App\Models\User
      */
+    //Funzione di Creazione dell'utente
     public function create(array $input)
     {
         Validator::make($input, [
@@ -52,4 +54,42 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
     }
+
+    //Funzione di Edit dell'utente registrato
+    public function edit($id)
+    {
+        $users = User::find($id);
+        return view('users.edit', compact('users'));
+    }
+
+    //Funzione di Update dei dati utente registrato
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $users = User::find($id);
+        $users->update(
+            [
+                'name' => $request->input('name'),
+                'surname' => $request->input('surname'),
+                'date' => $request->input('date'),
+                'city' => $request->input('city'),
+                'nation' => $request->input('nation'),
+                'address' => $request->input('address'),
+                'postalCode' => $request->input('postalCode'),
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+                'password' => $request->input('password'),
+            ]
+        );
+        return redirect()->route('home');
+    }
+
+    //Funzione di Delete dei dati utente
+    public function delete($id)
+    {
+        $users = User::find($id);
+        $users->delete();
+        return redirect()->route('home');
+    }
+
 }

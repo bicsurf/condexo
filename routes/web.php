@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,8 @@ Route::get('/register', [PublicController::class , 'register'])->name('register'
     //Rotta Create
     //Rotta Store
     //Rotta Edit
+    Route::get('/{id}/edit', [CreateNewUser::class, 'edit'])->name('users.edit');
     //Rotta Update
+    Route::post('/{id}/update', [CreateNewUser::class, 'update'])->name('users.update');
     //Rotta Delete
+    Route::delete('/{id}/delete', [CreateNewUser::class, 'delete'])->name('users.delete');

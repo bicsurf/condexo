@@ -4,7 +4,7 @@
             <div>
                 <img class="mx-auto h-12 w-auto" src="\img\logo.jpg"
                     alt="Workflow">
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Login in your account</h2>
             </div>
             {{-- FORM DI REGISTRAZIONE --}}
             <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">

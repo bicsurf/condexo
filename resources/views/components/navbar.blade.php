@@ -3,43 +3,57 @@
         <div class="relative flex items-center justify-between h-16">
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
-                    <img class="block lg:hidden h-8 w-auto" src="\img\logo.jpg" alt="Workflow">
-                    <img class="hidden lg:block h-8 w-auto" src="\img\logo.jpg" alt="Workflow">
+                    <img class="block lg:hidden h-14 w-auto" src="\img\logo.jpg">
+                    <img class="hidden lg:block h-14 w-auto" src="\img\logo.jpg">
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <a href="{{ route('home') }}"
-                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-                            Home
-                        </a>
+                        <button type="button"
+                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                            <a href="{{ route('home') }}"
+                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                                Home
+                            </a>
+                        </button>
+
                         {{-- Nel caso di un utente loggato --}}
                         @auth
-                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">
                                 Nome Utente:
                                 {{ Auth::user()->name }}
                             </a>
                             {{-- Form di Logout --}}
-                            <a href="{{ route('logout') }}"
-                                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"
-                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
-                                Logout
-                            </a>
-                            <form action="{{ route('logout') }}" method="POST" id="form-logout">
-                                @csrf
-                            </form>
+                            <button type="button"
+                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                <a href="{{ route('logout') }}"
+                                    class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"
+                                    onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+                                    Logout
+                                </a>
+                                <form action="{{ route('logout') }}" method="POST" id="form-logout">
+                                    @csrf
+                                </form>
+                            </button>
                             {{-- End Form di Logout --}}
                         @endauth
 
                         {{-- Nel caso di un utente NON loggato --}}
                         @guest
+                        <button type="button"
+                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                             <a href="{{ route('login') }}"
-                                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
                                 Log-In
                             </a>
+                        </button>
+                        <button type="button"
+                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                             <a href="{{ route('register') }}"
-                                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
                                 Registrati
                             </a>
+                        </button>
                         @endguest
                     </div>
                 </div>
