@@ -29,8 +29,8 @@ class CreateNewUser implements CreatesNewUsers
             'city' => ['required', 'string', 'max:255'],
             'nation' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'postalCode' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255'],
+            'postalCode' => ['required', 'string', 'max:5'],
+            'phone' => ['required', 'string', 'max:10'],
             'email' => [
                 'required',
                 'string',
@@ -90,6 +90,12 @@ class CreateNewUser implements CreatesNewUsers
         $users = User::find($id);
         $users->delete();
         return redirect()->route('home');
+    }
+
+    //Funzione di Ricerca dell'utente
+    public function searchUsers(Request $request){
+        $users = User::search($request->searched)->where('is_accepted', true)->paginate(6);
+        return view('home', compact('users'));
     }
 
 }

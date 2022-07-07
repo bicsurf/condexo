@@ -10,24 +10,27 @@
                     <div class="flex space-x-4">
                         <button type="button"
                             class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                            <a href="{{ route('home') }}"
-                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                            <a href="{{ route('home') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">
                                 Home
                             </a>
                         </button>
 
                         {{-- Nel caso di un utente loggato --}}
                         @auth
-                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                                aria-current="page">
-                                Nome Utente:
-                                {{ Auth::user()->name }}
-                            </a>
+                            <button type="button"
+                                class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                <p>Nome Utente:</p>
+                                <a href="#" class="text-white underline px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            </button>
                             {{-- Form di Logout --}}
                             <button type="button"
-                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                                 <a href="{{ route('logout') }}"
-                                    class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"
+                                    class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"
                                     onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
                                     Logout
                                 </a>
@@ -40,20 +43,20 @@
 
                         {{-- Nel caso di un utente NON loggato --}}
                         @guest
-                        <button type="button"
-                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                            <a href="{{ route('login') }}"
-                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-                                Log-In
-                            </a>
-                        </button>
-                        <button type="button"
-                            class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                            <a href="{{ route('register') }}"
-                                class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-                                Registrati
-                            </a>
-                        </button>
+                            <button type="button"
+                                class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                <a href="{{ route('login') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">
+                                    Log-In
+                                </a>
+                            </button>
+                            <button type="button"
+                                class="text-white bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                <a href="{{ route('register') }}"
+                                    class="text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                                    Registrati
+                                </a>
+                            </button>
                         @endguest
                     </div>
                 </div>

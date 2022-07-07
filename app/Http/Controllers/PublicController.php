@@ -9,7 +9,7 @@ class PublicController extends Controller
 {
     public function home() {
         //Query al DB per prendere tutti gli Utenti registrati e restiturli in ordine crescente
-        $users = User::orderBy('created_at', 'asc')->take(4)->get();
+        $users = User::orderBy('created_at', 'asc')->take(10)->get();
         return view('welcome', compact('users'));
     }
 
